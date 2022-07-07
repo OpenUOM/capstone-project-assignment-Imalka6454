@@ -98,8 +98,8 @@ const readStudents = async () => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then((Students) => {
+                resolve(Students);
             })
             .catch((error) => {
                 reject(error);
@@ -112,8 +112,8 @@ const readStudentInfo = async (id) => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then((Student) => {
+                resolve(Student);
             })
             .catch((error) => {
                 reject(error);
@@ -122,12 +122,12 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, hometown) => {
-    const sql = `INSERT INTO Student(id, name, age, hometown) values (?, ?, ?, ?)`
+    const sql = `INSERT INTO Student(id,name,age,hometown) values (?, ?, ?, ?)`
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then(() => {
+                resolve({status: "Successfully inserted Student"})
             })
             .catch((error) => {
                 reject(error);
@@ -140,8 +140,8 @@ const updateStudent = async (name, age, hometown, id) => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then(() => {
+                resolve({status: "Successfully updated Student"})
             })
             .catch((error) => {
                 reject(error);
@@ -154,8 +154,8 @@ const deleteStudent = async (id) => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then(() => {
+                resolve({status: "Successfully deleted Student"})
             })
             .catch((error) => {
                 reject(error);
